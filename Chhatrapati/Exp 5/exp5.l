@@ -1,0 +1,30 @@
+%{
+#include <stdio.h>
+// Name: Chhatrapati Supare 24070521202
+char convert_case(char c)
+{
+    if (c >= 'a' && c <= 'z')
+    {
+        return c - 'a' + 'A';
+    }
+    else if (c >= 'A' && c <= 'Z')
+    {
+        return c - 'A' + 'a';
+    }
+
+    return c;
+}
+%}
+%%
+[a-zA-Z]    { putchar(convert_case(yytext[0])); }
+.           { putchar(yytext[0]); }
+%%
+int main()
+{
+    yylex();
+    return 0;
+}
+int yywrap()
+{
+    return 1;
+}
